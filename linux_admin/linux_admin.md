@@ -186,3 +186,28 @@ Pour ajouter, supprimer des permissions, on utiliser **+** et **-** et les droit
 
 Donner les droits d'exécution au propriétaire : `chmod u+x fichier.txt`.\
 Supprimer les droits de lecture écriture aux autres utilisateurs : `chmod o-rw fichier.txt`. 
+
+## Trouver l'emplacement d'un programme
+
+On peut utiliser la commande **whereis** pour trouver l'emplacement d'un programme.
+
+Pour trouver l'emplacement de **ls**.
+```sh
+$ whereis ls
+ls: /bin/ls /usr/share/man/man1/ls.1.gz
+```
+
+Lorsque l'on tape une commande, notre shell va regarder dans certain dossier si un programme correspondant à ce nom existe.
+
+La liste de ces dossier peut être vue avec la commande **`echo $PATH`**.
+
+```sh
+$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+```
+
+**Exercice:**
+
+1. Trouver l'emplacement de date avec la commande `whereis`.
+2. Utiliser la commande `chmod` pour retirer les droits d'exécution aux autres utilisateurs
+3. Vérifier que la commande `date` ne fonctionne plus.
