@@ -180,6 +180,8 @@ On lui donne en paramètre pour qui les droits sont avec les lettres **u**, **g*
 
 Pour ajouter, supprimer des permissions, on utiliser **+** et **-** et les droits que l'on souhaite **donner / supprimer**.
 
+**g-x** : va supprimer le droit d'exécution pour un groupe.
+
 **Exemples :**
 
 Donner les droits d'exécution au propriétaire : `chmod u+x fichier.txt`.\
