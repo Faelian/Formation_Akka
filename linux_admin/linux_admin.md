@@ -438,7 +438,7 @@ La commande **ifconfig** permet de trouver votre addresse **IP**. Votre adresse 
 
 ### Consigne :
 
-En utilisant une **boucle for**, **ping** et la commande **grep**. \
+En utilisant une **boucle for**, **ping** et la commande **grep**.
 
 Effectuez  un **ping scan** (aka dire si des machines sont présentes) du réseau **192.168.56.1/24** soit les addresses entre **192.168.56.1** et **192.168.56.255**.\
 Le format de la sortie n'a ici pas d'importance du moment que les *IP* des machines *up* est visible.
@@ -447,6 +447,58 @@ Le format de la sortie n'a ici pas d'importance du moment que les *IP* des machi
 
 **Bonus:** démarrer la machine **Metasploitable** et regader si **votre scan la découvre** !
 
+\newpage
 
-## Exercice2 
+## Tester une condition
 
+Dans un **script shell**, on peut utiliser l'opérateur **if** pour tester une condition.
+
+
+**Condition simple:**
+```sh
+#!/bin/sh
+
+var=5
+if [ $var -eq 5 ]
+then
+   echo "var est égale à 5";
+fi
+```
+Résultat : `var est égale à 5`
+
+**Else if**
+On peut réaliser une action différente si le test échoue :
+
+```sh
+var=4
+if [ $var -eq 5 ]
+then
+   echo "var est égale à 5";
+else
+   echo "var ne vaut pas 5";
+fi
+```
+Résultat : `var ne vaut pas 5`
+
+### Comparer du texte
+On peut également tester si une **variable** est égale à une **chaine de caractère**.
+
+```sh
+#!/bin/sh
+
+status='humain'
+if [ $status != "droide" ]
+then
+   echo "Par ici je vous prie."
+else
+   echo 'Les droides ne sont pas autorisés dans ce bar. Faîtes demi-tour.'
+fi
+```
+
+\newpage
+
+## Exercice2:
+
+Créer un fichier **obiwan.sh** dont la sortie
+
+```sh
