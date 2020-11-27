@@ -325,6 +325,8 @@ $ echo Bonjour, je suis $nom
 Bonjour, je suis Olivier
 ```
 
+**/!\\ Attention à ne pas mettre d'espace entre la variable et la valeur**
+
 ## Utiliser des boucles
 
 Une **boucle** est une façon de **réaliser plusieurs** fois une action en programmation.
@@ -359,4 +361,58 @@ $ for i in $(seq 1 10); do echo $i; done
 10
 ```
 
+On peut réutiliser les variables dans des commandes.
+```sh
+$ for i in $(seq 1 10); do echo 192.168.1.$i; done
+192.168.1.1
+192.168.1.2
+192.168.1.3
+192.168.1.4
+192.168.1.5
+192.168.1.6
+192.168.1.7
+192.168.1.8
+192.168.1.9
+192.168.1.10
+```
 
+\newpage
+
+## Exercice : boucle for
+
+La commande **ping** permet de tester si une machine présente sur le réseau.
+
+L'option **-c** permet de définir le **nombre de paquet emis**. On peut utiliser **-c 1** pour envoyer un seul paquet.\
+L'option **-W** définit le **timeout**, soit le temps d'attente avant de conclure que la machine n'est pas disponnible à 1 seconde avec **-W 1**.
+
+Cas d'une machine présente.
+```sh
+$ ping -c 1 -W 1 127.0.0.1
+PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.018 ms
+
+--- 127.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.018/0.018/0.018/0.000 ms
+```
+
+Cas d'une machine non présente.
+```sh
+$ ping -c 1 -W 1 128.0.0.1
+PING 128.0.0.1 (128.0.0.1) 56(84) bytes of data.
+
+--- 128.0.0.1 ping statistics ---
+1 packets transmitted, 0 received, 100% packet loss, time 0ms
+```
+
+On constate la ligne *64 bytes from 127.0.0.1 ...* si la machine est présente.
+
+**ifconfig** permet de trouver votre addresse **IP**. Votre adresse sur **eth1** devrait être de la forme **192.168.56.x**.
+
+**La consigne est la suivante :**
+
+En utilisant une **boucle for**, **ping** et la commande **grep**, effectuez  un **ping scan** du réseau **192.168.56.1/24** soit les addresses entre **192.168.56.1** et **192.168.56.255**.
+
+Conseil: Pour vos tests, je recommande d'utiliser seulement une dizaine de valeurs dans le `seq` dont votre IP.
+
+**Bonus:** démarrer la machine **Metasploitable** et regader si **votre scan la découvre** !
