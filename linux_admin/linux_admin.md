@@ -376,16 +376,27 @@ $ for i in $(seq 1 10); do echo 192.168.1.$i; done
 192.168.1.10
 ```
 
+Dans un **script shell**, on peut utiliser la syntaxe suivante :
+
+`boucle.sh`
+```sh 
+#!/bin/sh
+
+for i in $(seq 1 10); do
+    echo 192.168.56.$i
+done
+```
+
 \newpage
 
-## Exercice : boucle for
+## Exercice 1 : ping scan
 
 La commande **ping** permet de tester si une machine présente sur le réseau.
 
 L'option **-c** permet de définir le **nombre de paquet emis**. On peut utiliser **-c 1** pour envoyer un seul paquet.\
-L'option **-W** définit le **timeout**, soit le temps d'attente avant de conclure que la machine n'est pas disponnible à 1 seconde avec **-W 1**.
+L'option **-W** définit le **timeout**, soit le temps d'attente avant de conclure que la machine n'est pas disponible. On peut le mettre à **1 seconde** avec **-W 1**.
 
-Cas d'une machine présente.
+### Cas d'une machine présente.
 ```sh
 $ ping -c 1 -W 1 127.0.0.1
 PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
@@ -396,7 +407,7 @@ PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
 rtt min/avg/max/mdev = 0.018/0.018/0.018/0.000 ms
 ```
 
-Cas d'une machine non présente.
+### Cas d'une machine non présente.
 ```sh
 $ ping -c 1 -W 1 128.0.0.1
 PING 128.0.0.1 (128.0.0.1) 56(84) bytes of data.
@@ -407,12 +418,15 @@ PING 128.0.0.1 (128.0.0.1) 56(84) bytes of data.
 
 On constate la ligne *64 bytes from 127.0.0.1 ...* si la machine est présente.
 
-**ifconfig** permet de trouver votre addresse **IP**. Votre adresse sur **eth1** devrait être de la forme **192.168.56.x**.
+La commande **ifconfig** permet de trouver votre addresse **IP**. Votre adresse sur **eth1** devrait être de la forme **192.168.56.x**.
 
-**La consigne est la suivante :**
+### Consigne :
 
-En utilisant une **boucle for**, **ping** et la commande **grep**, effectuez  un **ping scan** du réseau **192.168.56.1/24** soit les addresses entre **192.168.56.1** et **192.168.56.255**.
+En utilisant une **boucle for**, **ping** et la commande **grep**. \
 
-Conseil: Pour vos tests, je recommande d'utiliser seulement une dizaine de valeurs dans le `seq` dont votre IP.
+Effectuez  un **ping scan** (aka dire si des machines sont présentes) du réseau **192.168.56.1/24** soit les addresses entre **192.168.56.1** et **192.168.56.255**.\
+Le format de la sortie n'a ici pas d'importance du moment que les *IP* des machines *up* est visible.
+
+**Conseil:** Pour vos tests, je recommande d'utiliser seulement *une dizaine* de valeurs dans le `seq` dont votre IP.
 
 **Bonus:** démarrer la machine **Metasploitable** et regader si **votre scan la découvre** !
