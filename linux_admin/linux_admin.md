@@ -97,6 +97,24 @@ $ killall firefox
 
 **pgrep** : Trouver un PID à partir du nom d'un processus. `pgrep zsh`\
 
+## Devenir root
+
+Le compte **root** est le superutilisateur sous Linux.
+La commande **su** permet de changer d'utilisateur. Si on ne précise pas de paramètre vous devenez root.
+
+Vous pouvez devenir root avec la commande `sudo su`
+
+```sh
+$ whoami
+kali
+
+$ sudo su
+# whoami
+root
+```
+
+Notez comme le symbole **$** a été remplacer par un **#**.
+
 \newpage
 
 ## Les utilisateurs et les groupes
@@ -105,3 +123,44 @@ Nous ne verrons pas ici comment ajouter et supprimer des utilisateurs. Je vous i
 [https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux/39044-les-utilisateurs-et-les-droits](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux/39044-les-utilisateurs-et-les-droits)
 
 Sous Linux, les utilisateurs font partis de groupes.
+
+On peut lister les droits d'un fichier avec `ls -l`
+```sh
+$ ls -l
+total 12
+drwxr-xr-x 2 kali kali 4096 Nov 27 02:58 dossier
+-rw-r--r-- 1 kali kali   27 Nov 26 09:46 prénoms.txt
+-rw-r--r-- 1 kali kali    8 Nov 26 10:08 test.txt
+```
+
+Le 1er **d** indique qu'il s'agit d'un dossier si il est présent
+
+Ensuite les droits sont représentés avec rwx 
+r: read    - lecture
+w: write   - écriture
+x: execute - exécution
+
+Les trois premiers rwx correspondent aux droits du propriétaire.
+Les trois seconds correspondent aux droits des membres du groupe
+Les trois suivants correspondent aux droits des autres presonnes.
+
+Ensuite le propriétaire et le groupe du fichier sont indiqués
+
+Ici le **propriétaire** du fichier est **kali**, et le **groupe** de fichier est **kali**.
+
+Si on fait un **`ls -l`** sur /etc/shadow. On voit que le **propriétaire** est **root**, et le **groupe** est **shadow**.
+
+```sh
+$ ls -l /etc/shadow
+-rw-r----- 1 root shadow 1294 juin  15 10:18 /etc/shadow
+```
+
+Si on reprend notre dossier d'exemple.
+```
+drwxr-xr-x 2 kali kali 4096 Nov 27 02:58 dossier
+-rw-r--r-- 1 kali kali   27 Nov 26 09:46 prénoms.txt
+-rw-r--r-- 1 kali kali    8 Nov 26 10:08 test.txt
+```
+
+**kali** a les droits en **lecture et écriture** (rw) sur le fichier prénom.\
+Les membre du groupe et autres membres du systèmes ont les droits en **lecture** (r).
