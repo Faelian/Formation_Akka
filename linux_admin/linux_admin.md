@@ -333,6 +333,7 @@ On peut **stocker dans une variable** le résultat d'**une commande**.
 $ me=`whoami`
 $ echo $me
 kali
+```
 
 Dans un script, une variable s'utilise de la façon suivante:
 ```sh
@@ -499,6 +500,8 @@ fi
 
 ## Exercice2:
 
-Créer un fichier **obiwan.sh** dont la sortie
+Créer un fichier **obiwan.sh** dont la sortie varie en fonction de l'utilisateur qui l'exécute.
+
+
 
 ```sh
