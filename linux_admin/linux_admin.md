@@ -327,6 +327,22 @@ Bonjour, je suis Olivier
 
 **/!\\ Attention à ne pas mettre d'espace entre la variable et la valeur**
 
+On peut **stocker dans une variable** le résultat d'**une commande**.
+
+```sh
+$ me=`whoami`
+$ echo $me
+kali
+
+Dans un script, une variable s'utilise de la façon suivante:
+```sh
+#!/bin/sh
+
+nom='John'
+whoami=$(whoami)
+echo "Bonjour $nom, vous êtes radieux aujourd'hui !\nAvez vous renconté $whoami ?"
+```
+
 ## Utiliser des boucles
 
 Une **boucle** est une façon de **réaliser plusieurs** fois une action en programmation.
@@ -430,3 +446,7 @@ Le format de la sortie n'a ici pas d'importance du moment que les *IP* des machi
 **Conseil:** Pour vos tests, je recommande d'utiliser seulement *une dizaine* de valeurs dans le `seq` dont votre IP.
 
 **Bonus:** démarrer la machine **Metasploitable** et regader si **votre scan la découvre** !
+
+
+## Exercice2 
+
