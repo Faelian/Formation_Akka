@@ -482,13 +482,26 @@ fi
 Résultat : `var ne vaut pas 5`
 
 ### Comparer du texte
-On peut également tester si une **variable** est égale à une **chaine de caractère**.
+On peut également tester si une **variable** est **égale** à une **chaine de caractère**.
 
+`classic.sh`
+```sh
+#!/bin/sh
+
+version='original'
+if [ $version = "original" ] # teste si la variable est identique
+then
+   echo "Han shoot first."
+fi
+```
+
+Ou si une **variable** est **différente** d'une **chaine de caractère**.
+`bar.sh`
 ```sh
 #!/bin/sh
 
 status='humain'
-if [ $status != "droide" ]
+if [ $status != "droide" ] # teste si la variable est différente
 then
    echo "Par ici je vous prie."
 else
@@ -496,12 +509,30 @@ else
 fi
 ```
 
-\newpage
-
-## Exercice2:
+## Exercice 2 : 
 
 Créer un fichier **obiwan.sh** dont la sortie varie en fonction de l'utilisateur qui l'exécute.
 
+Si l'utilisateur qui exécute le programme est **kali**, la sortie est la suivante: 
+```
+$ ./obiwan.sh
+Utilise la force Luke.
+```
 
+Pour tout autre utilisateur (exemple: **root**), la sortie est la suivante:
+```
+# ./obiwan.sh
+Ce ne sont pas les droides que vous recherchez.
+```
 
-```sh
+## Exercice 3 :
+
+À l'adresse **[https://lasne.pro/kata/](https://lasne.pro/kata/)**, vous trouverez 974 fichiers textes. L'un d'eux contient un **flag** au format **flag{texte à trouver}**. 
+
+Trouvez le message, et le nom du fichier.
+
+Pour résoudre cet exercice, vous aurez besoin de la commande **curl** qui effectue une **requête HTTP**, et de votre connaissance des **boucles**.
+
+Une solution alternative peut être trouvée avec commande **wget**, et l'**option récursive** de **grep**.
+
+Bon courage.
