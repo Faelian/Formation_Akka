@@ -135,17 +135,17 @@ drwxr-xr-x 2 kali kali 4096 Nov 27 02:58 dossier
 
 Le 1er **d** indique qu'il s'agit d'un dossier si il est présent
 
-Ensuite les droits sont représentés avec rwx \
-**r**: read    - lecture \
-**w**: write   - écriture \
-**x**: execute - exécution \
+Ensuite les droits sont représentés avec rwx\
+**r**: read    - lecture\
+**w**: write   - écriture\
+**x**: execute - exécution\
 
 **x** pour les dossier a une signification spéciale qui indique que l'utilisateur a le droit d'accéder à un dossier.
 
 
 
 Les **trois premiers** rwx correspondent aux droits du **propriétaire**.\
-Les **trois seconds** correspondent aux **droits des membres du groupe**.\
+Les **trois seconds** correspondent aux droits des **membres du groupe**.\
 Les **trois suivants** correspondent aux droits des **autres presonnes** (others).\
 
 Ensuite le propriétaire et le groupe du fichier sont indiqués
@@ -168,3 +168,19 @@ drwxr-xr-x 2 kali kali 4096 Nov 27 02:58 dossier
 
 **kali** a les droits en **lecture et écriture** (rw) sur le fichier prénom.\
 Les membre du groupe et autres membres du systèmes ont les droits en **lecture** (r).
+
+## Modifier les droits
+
+Pour modifier les droits d'un fichier. On peut utiliser la commnande **chmod**.
+
+On lui donne en paramètre pour qui les droits sont avec les lettres **u**, **g** et **o**.\
+**u** : utilisateur (= propriétaire du fichier)\
+**g** : groupe\
+**o** : autres utilisateurs (others)\
+
+Pour ajouter, supprimer des permissions, on utiliser **+** et **-** et les droits que l'on souhaite **donner / supprimer**.
+
+**Exemples :**
+
+Donner les droits d'exécution au propriétaire : `chmod u+x fichier.txt`.\
+Supprimer les droits de lecture écriture aux autres utilisateurs : `chmod o-rw fichier.txt`. 
