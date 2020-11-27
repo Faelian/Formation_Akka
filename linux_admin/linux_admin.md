@@ -208,6 +208,53 @@ $ echo $PATH
 
 **Exercice:**
 
-1. Trouver l'emplacement de date avec la commande `whereis`.
+1. Trouver l'emplacement de **date** avec la commande `whereis`.
 2. Utiliser la commande `chmod` pour retirer les droits d'exécution aux autres utilisateurs
 3. Vérifier que la commande `date` ne fonctionne plus.
+
+## Les scripts shells
+
+Un **script shell** est un fichier qui contient une succession de commandes.\
+
+Les scripts shell **commencent par la ligne `#!/bin/sh`** pour indiquer l'interperteur au système. (Retenez juste qu'il faut mettre `#!/bin/sh en première ligne).
+
+**Exemple de script:**
+*droid.sh*
+```sh
+#!/bin/sh
+
+echo 'Ce ne sont pas les droides que vous recherchez.'
+```
+On donne les **droits d'exécution** à notre script avec **chmod**
+```sh
+$ chmod +x droid.sh
+
+$ ls -l droid.sh
+-rwxr-xr-x 1 kali kali 67 nov.  27 11:44 droid.sh
+```
+
+On peut ensuite **exécuter** les script avec `./droid.sh`:
+```sh
+$ ./droid.sh
+Ce ne sont pas les droides que vous recherchez.
+```
+
+On peut aussi l'exécuter en donnant le **chemin complet**.
+```sh
+$ /home/kali/tp/droid.sh
+Ce ne sont pas les droides que vous recherchez.
+```
+
+
+**Exercice :**
+
+1. Écrivez un petit script shell
+2. Regardez votre **PATH** avec `echo $PATH`
+3. Copier le script dans un dossier de votre PATH. Cela permet de l'exécuter en écrivant juste son nom.
+
+Si **droid.sh** est dans mon **PATH**. Je peux l'appeler en écrivant juste `droid.sh`
+
+```sh
+$ droid.sh
+Ce ne sont pas les droides que vous recherchez.
+```
