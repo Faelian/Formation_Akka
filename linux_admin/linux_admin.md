@@ -135,14 +135,18 @@ drwxr-xr-x 2 kali kali 4096 Nov 27 02:58 dossier
 
 Le 1er **d** indique qu'il s'agit d'un dossier si il est présent
 
-Ensuite les droits sont représentés avec rwx 
-r: read    - lecture
-w: write   - écriture
-x: execute - exécution
+Ensuite les droits sont représentés avec rwx \
+**r**: read    - lecture \
+**w**: write   - écriture \
+**x**: execute - exécution \
 
-Les trois premiers rwx correspondent aux droits du propriétaire.
-Les trois seconds correspondent aux droits des membres du groupe
-Les trois suivants correspondent aux droits des autres presonnes.
+**x** pour les dossier a une signification spéciale qui indique que l'utilisateur a le droit d'accéder à un dossier.
+
+
+
+Les **trois premiers** rwx correspondent aux droits du **propriétaire**.\
+Les **trois seconds** correspondent aux **droits des membres du groupe**.\
+Les **trois suivants** correspondent aux droits des **autres presonnes** (others).\
 
 Ensuite le propriétaire et le groupe du fichier sont indiqués
 
