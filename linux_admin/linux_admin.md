@@ -212,11 +212,14 @@ $ echo $PATH
 2. Utiliser la commande `chmod` pour retirer les droits d'exécution aux autres utilisateurs
 3. Vérifier que la commande `date` ne fonctionne plus.
 
-## Les scripts shells
+\newpage
 
-Un **script shell** est un fichier qui contient une succession de commandes.\
+# Les scripts shells
 
-Les scripts shell **commencent par la ligne `#!/bin/sh`** pour indiquer l'interperteur au système. (Retenez juste qu'il faut mettre `#!/bin/sh en première ligne).
+Un **script shell** est un fichier qui contient une succession de commandes.
+
+Les scripts shell **commencent par la ligne** `#!/bin/sh` pour indiquer l'interperteur à utiliser au système.\
+(Un script *python* commence par `#!/usr/bin/python`. Retenez juste qu'il faut mettre `#!/bin/sh` en première ligne).
 
 **Exemple de script:**
 *droid.sh*
@@ -249,12 +252,111 @@ Ce ne sont pas les droides que vous recherchez.
 **Exercice :**
 
 1. Écrivez un petit script shell
-2. Regardez votre **PATH** avec `echo $PATH`
-3. Copier le script dans un dossier de votre PATH. Cela permet de l'exécuter en écrivant juste son nom.
+2. Faites lui écrire le texte de votre choix avec la commande `echo`.
 
-Si **droid.sh** est dans mon **PATH**. Je peux l'appeler en écrivant juste `droid.sh`
+3. Regardez votre **PATH** avec `echo $PATH`
+4. Copier le script dans un dossier de votre PATH. Cela permet de l'exécuter en écrivant juste son nom.
+
+Si **droid.sh** est dans mon **PATH**. Je peux l'appeler en écrivant juste `droid.sh`.\
+On dit qu'un programme est dans le **PATH** si il est dans un des dossiers retournés par la commande `echo $PATH`.
 
 ```sh
 $ droid.sh
 Ce ne sont pas les droides que vous recherchez.
 ```
+## Enchaîner des commandes
+
+On peut exécuter plusieurs commandes à la suite en les séparants avec un '**;**'.
+
+```sh
+$ echo -n "Nous sommes le "; date; echo -n "Et je suis "; whoami 
+Nous sommes le vendredi 27 novembre 2020, 12:51:48 (UTC+0100)
+Et je suis kali
+```
+
+## Imbriquer des commandes
+Pour utiliser le résultat d'un commande dans une autre, on peut utiliser deux notations :
+
+* `$(macommande)`
+* `` `macommande` ``
+
+La caractère ``` ` ``` est appelé **backtick**.
+
+NB: dans un script shell, on peut aussi utiliser les **;**. Mais on peut simplement faire un retour à la ligne.
+
+**Exemple:**
+```sh
+$ whoami
+kali
+
+$ echo Bonjour, je suis $(whoami)
+Bonjour, je suis kali
+
+$ echo Bonjour, je suis `whoami`
+Bonjour, je suis kali
+```
+
+**Exercice:**
+Nous allons utiliser cette nouvelle syntaxe pour tuer un processus avec **pgrep** et **kill**.
+
+Rappel: 
+**pgrep** trouve un **PID** à partir du nom du processus
+```sh
+$ pgrep cmatrix
+1337
+```
+
+**kill** tue un processus en prennant un **PID**
+```sh
+$ kill 1337
+```
+1. Lancer **cmatrix** dans un second terminal
+2. Utiliser **pgrep** pour trouver le **PID** de cmatrix
+3. Utiliser la nouvelle syntaxe **$(commande)** pour donner directement le **PID** de cmatrix à **kill** via la commande **pgrep**
+
+## Les variables
+
+On peut utiliser le symbole **=** pour **assigner** une valeur à une **variable**.
+
+```sh
+$ nom='Olivier'
+
+$ echo Bonjour, je suis $nom
+Bonjour, je suis Olivier
+```
+
+## Utiliser des boucles
+
+Une **boucle** est une façon de **réaliser plusieurs** fois une action en programmation.
+
+Le programme **seq** va lister tous les nombres dans un intervale.
+```sh
+$ seq 1 10
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+```
+
+Pour faire un **boucle for**, on peut utiliser la syntaxe suivante:
+```sh
+$ for i in $(seq 1 10); do echo $i; done
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+```
+
+
