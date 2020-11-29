@@ -274,6 +274,7 @@ Listening on [0.0.0.0] (family 0, port 4444)
 1. Ouvrez un port __en écoute__ avec netcat sur la machine _Metasploitable_.
 2. Connectez-vous dessus depuis _Kali_ avec __netcat__.
 3. Communiquer entre les deux machines avec la connexion que vous venez de créer. Observez ce qu'il se passe.
+4. Utiliser **Wireshark** pendant un échange, et observez le trafic.
 
 ### Transférer des données avec netcat
 
