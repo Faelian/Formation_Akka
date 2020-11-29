@@ -152,11 +152,20 @@ Pour **Kali** on garde une interface en **NAT** de façon à pouvoir accéder à
 
 ![configuration réseau de Kali](./images/vbox_config_res.png)
 
+Normalement, nous devrions avoir maintenant deux **interfaces réseau configurées** :
+
+* Une **interface 1** en **NAT**
+* Une **interface 2** en **réseau privé hôte**.
+
 ## Configurer les interfaces de Metaspoiltable
 Faire la même chose sur **Metasploitable**.\
 Configurer l'interface réseau 1, et définir le **réseau privé hôte** *vboxnet0*. (Il n'est pas nécessaire de garder une interface en NAT pour accèder à Internet.)
 
 ![configuration réseau de Metasploitable](./images/network_metasploitable.png)
+
+Nous devrions maintenant avoir une seule interface :
+
+* **Interface 1** en **réseau privé hôte**
 
 \newpage
 
