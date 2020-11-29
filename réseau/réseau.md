@@ -270,6 +270,58 @@ Listening on [0.0.0.0] (family 0, port 4444)
 ```
 
 **Exercice :**
-Ouvrez un port en écoute avec netcat, et connectez-vous dessus.
+
+1. Ouvrez un port __en écoute__ avec netcat sur la machine _Metasploitable_.
+2. Connectez-vous dessus depuis _Kali_ avec __netcat__.
+3. Communiquer entre les deux machines avec la connexion que vous venez de créer. Observez ce qu'il se passe.
+
+### Transférer des données avec netcat
+
+Netcat est un utilitaire fiable, et on peut utiliser les __pipes__ et redirections pour transferer des fichiers à travers __netcat__.
+
+Prennons en exemple le fichier hosts.
+
+`/etc/hosts`
+
+    127.0.0.1	localhost
+    127.0.1.1	metasploitable.localdomain	metasploitable
+    
+    # The following lines are desirable for IPv6 capable hosts
+    ::1     ip6-localhost ip6-loopback
+    fe00::0 ip6-localnet
 
 
+
+On peut tranferer un fichier d'une machine à l'autre de la façon suivante.
+
+**Exemple :**
+
+_Kali_
+
+```bash
+nc -lvp 4444 > hostname
+```
+
+_Metasploitable_
+
+```bash
+cat /etc/hostname | nc 192.168.1.101 4444
+```
+
+Il est bien entendu nécessaire de modifier les IP et les ports par celle de vos machine.
+
+
+**Exercice :**
+
+Les commandes vues ci-dessus fonctionnent sur des fichiers binaires. Utiliser `netcat` pour transférer le programme `/bin/ls` d'une machine à l'autre.
+
+Vous ne pourrez pas exécuter le programme sur la seconde machine car metasploitable est en _32 bits_, et kali en _64 bits_. Plus de détails ici [https://askubuntu.com/questions/454253/how-to-run-32-bit-app-in-ubuntu-64-bit](https://askubuntu.com/questions/454253/how-to-run-32-bit-app-in-ubuntu-64-bit).
+
+Néanmoins vous pouvez vérifier que le programme n'a pas été altéré pendant la transmission avec la commande `sha256sum`.
+
+```bash
+$ sha256sum ls
+8c0d752022269a8673dc38ef5d548c991bc7913a43fe3f1d4d076052d6a5f0b6  ls
+```
+
+Si le résultat est le même avec le fichier original, et le fichier transmis, c'est qu'ils sont parfaitement identiques.
