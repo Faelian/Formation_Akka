@@ -205,11 +205,63 @@ Ce fichier est très pratique pour ne pas avoir à retenir l'IP de machine qui n
 **Exercice :**
 Ajouter une entrée pour la machine _Metasploitable 2_ au fichier __/etc/hosts__ de kali.
 
+### Les services
 
+Sous Linux il existes plusieurs programmes qui tournent en arrière plan que l'on appelle les services.
 
+Ces derniers sont en chagre de différentes choses comme la configuration réseau (network-manager) ou l'affichage graphique (x11).
 
+Lorsque l'on ajoute des fonctionnalités à notre machine (comme un serveur web, une base de données). Elle est généralement gérée comme un service.
 
+### Gérer les services
 
+L'ensemble des services peut être listée avec la commande `service --status-all`.
+
+Pour voir l'état d'un service particulier on peut utiliser la commande `service nomduservice status`.
+
+Par exemple avec SSH :
+```sh
+$ sudo service ssh status
+● ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: disabled)
+     Active: inactive (dead) since Mon 2020-11-30 04:48:10 EST; 3s ago
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+    Process: 622 ExecStart=/usr/sbin/sshd -D $SSHD_OPTS (code=exited, status=0/SUCCESS)
+   Main PID: 622 (code=exited, status=0/SUCCESS)
+```
+
+### Démarrer / éteindre un service
+
+Pour démarrer un service on utilise le paramètre **`start`** :
+```sh
+$ sudo service ssh start 
+```
+
+Pour éteindre un service on utilise le paramètre **`stop`** :
+```sh
+$ sudo service ssh stop 
+```
+
+### Configurer un service au démarrage
+
+Pour qu'un service soit lancer automatiquement au démarrage, on utilise un autre utilitaire nommé **systemctl**. Cette commande permet de configurer **systemd** qui gère tous les services sur les distributions récentes.
+
+Pour qu'un service soit lancé au démarrage :
+```sh
+$ sudo systemctl enable ssh
+Synchronizing state of ssh.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable ssh
+```
+
+Pour qu'un service ne soit plus exécuter au démarrage :
+```sh
+$ sudo systemctl disable ssh 
+Synchronizing state of ssh.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install disable ssh
+Removed /etc/systemd/system/sshd.service.
+Removed /etc/systemd/system/multi-user.target.wants/ssh.service.
+```
 
 
 \newpage
