@@ -300,6 +300,8 @@ msfadmin
 Pour une première connexion à la machine, _ssh_ demande d'authentifier la machine avec une empreinte RSA.
 Une fois validé, vous pouvez vous authentifier avec un mot de passe.
 
+Pour que la commande **`clear`** ou **Ctrl + L** fonctionnent. Il faut définir le terminal avec la commande **`export TERM=xterm`**.
+
 Pour fermer la connexion, utiliser **Ctrl + D** ou la commande `exit`.
 
 ### Netcat
