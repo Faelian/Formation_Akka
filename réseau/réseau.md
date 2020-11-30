@@ -183,6 +183,8 @@ __-p__ : affiche les __processus__ qui utilise le port (nécessite les droits ad
 
 ## Le fichier /etc/hosts
 
+Identifiants de _metasploitable 2_ : **msfadmin/msfadmin**
+
 Le fichier _/etc/hosts permet_ d'associer un __nom à une IP__ (de la même manière que le protocole DNS).
 
 Par défaut il contient les lignes suivantes :
