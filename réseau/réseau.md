@@ -205,7 +205,7 @@ Ce fichier est très pratique pour ne pas avoir à retenir l'IP de machine qui n
 **Exercice :**
 Ajouter une entrée pour la machine _Metasploitable 2_ au fichier __/etc/hosts__ de kali.
 
-### Les services
+## Les services
 
 Sous Linux il existes plusieurs programmes qui tournent en arrière plan que l'on appelle les services.
 
